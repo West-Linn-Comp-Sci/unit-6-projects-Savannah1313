@@ -1,0 +1,201 @@
+   public class MusicLibrary
+{
+    Album[] library; 
+    double totalPlays;
+    int totalSongs; 
+    int openIndex; 
+    int spot; 
+    String low; 
+    String low2;
+   
+    public MusicLibrary()
+    {
+        library= new Album[10];
+        totalPlays=0;
+        int totalSongs=0; 
+        int openIndex=0; 
+    }
+    
+    public void doubleSize(Album[] album)
+    {
+        Album[] newLibrary=new Album[album.length*2]; 
+        
+        for(int a=0; a<album.length; a++)
+        {
+            newLibrary[a]=library[a];
+        }
+        
+    }
+    
+    public void remove(int songs)
+    {
+      totalSongs-=library[songs].findNumberOfSongs(); 
+      totalPlays-=library[songs].findLength(); 
+      library[songs]=null; 
+    }
+    
+    public int linearSearchArtist(Album[] album, String artistName)
+    {
+      for(int i = 0; i < album.length; i++)
+      {
+                if(album[i].findArtist().equals(artistName))
+        {
+            //return the index;
+          return i;
+        }
+            }
+        return -1;
+    }
+  
+    public int linearSearchSong(Album[] album, String songName)
+    {
+        for(int i = 0; i < album.length; i++)
+      {
+        if(album[i].findName().equals(songName))
+        {
+          return i;
+        }
+            }
+        return -1;
+    }
+    
+    public int binarySearchTitle( Album[] album, String title)
+    {
+        int lower=0;
+        int higher= album.length;
+        int middle= (higher+lower)/2;
+        while (!album[middle].findName().equals(title))
+        {
+          if(title.length()<album[middle].findName().length())   
+          {
+              higher=middle;
+              middle= (higher+lower)/2; 
+          }
+          else if(title.length()>album[middle].findName().length())
+          {
+            lower=middle;
+            middle= (higher+lower)/2; 
+          }
+          else 
+          {
+              higher--;
+              lower++;
+              middle= (higher+lower)/2;
+              
+          }
+        }
+          return middle;
+    }
+    
+    public int binarySearchArtist( Album[] album, String artist)
+    {
+        int lower=0;
+        int higher= album.length;
+        int middle= (higher+lower)/2;
+        while (!album[middle].findArtist().equals(artist))
+        {
+          if(artist.length()<album[middle].findArtist().length())   
+          {
+              higher=middle;
+              middle= (higher+lower)/2; 
+          }
+          else if(artist.length()>album[middle].findName().length())
+          {
+            lower=middle;
+            middle= (higher+lower)/2; 
+          }
+          else //means title.length() == middle, but it isnt the title were looking for
+          {
+              higher--;
+              middle= (higher+lower)/2;
+              
+          }
+        }
+          return middle;
+    }
+ 
+    public void add(Album album)
+    {
+      library[openIndex]= album; 
+      openIndex++;
+      
+      totalSongs+=album.findNumberOfSongs(); 
+      totalPlays+=album.findLength(); 
+      
+    }
+    
+    public Album[] selectionSort(Album[] album)
+    {
+        for(int a= 0; a < album.length-1;a++) //sorts lowest album into each a index. first into a =0..second into a = 1... third into a =2...
+        {
+          int lowestAlbumIndex = a; //keeps track of our lowest album
+          for(int i=a; i < album.length;i++) //loops through albums
+          {
+            if(album[i] != null)
+            {
+                  if(album[i].findName().length() < album[lowestAlbumIndex].findName().length()) //if this album is lower than current lower album, make this the lowest album.
+                  {
+                   lowestAlbumIndex = i;
+                  }
+            }
+          }
+          //swap lowest album to first spot
+          Album placeholder = album[a];
+          album[a] = album[lowestAlbumIndex];
+          album[lowestAlbumIndex] = placeholder;        
+        }
+        return album;   
+    }
+    
+    public Album[] insertionSort(Album[] album)
+    {
+        for(int i = 1; i < album.length; i++)
+        {
+            for(int j = i; j > 0; j--)
+            {
+                if(album[j] != null && album[j-1] != null && album[j].findArtist().length() < album[j-1].findArtist().length()) //if this is less than the one before it
+                {
+                 //swap them
+                 Album placeholder;
+                 placeholder = album[j];
+                 album[j] = album[j-1];
+                 album[j-1] = placeholder;
+                }
+                else if(album[j] != null && album[j-1] != null)
+                {
+                    break;
+                }
+            }
+            
+        }
+        return album;
+        
+    }
+   
+   
+
+     
+  public int binarySearchArtist(Album[] album)
+    {
+
+       return 0;
+    }
+    
+ 
+    public String toString()
+    {
+        String toReturn ="";
+        toReturn += "Number of Songs:"+totalSongs+". Total Time of Songs Played: "+totalPlays+". Music Library Size: "+library.length+".\n";
+        
+        //add names of songs to list to return
+        for(int i = 0; i < library.length; i++)
+        {
+            if(library[i] != null)
+          {
+                    toReturn +=  library[i] +"\n";
+          }
+        }
+        return toReturn;
+    }
+}
+
