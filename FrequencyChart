@@ -1,0 +1,67 @@
+import java.util.Scanner;
+public class Array
+{
+    public static void main(String[] args)
+ { Scanner input = new Scanner(System.in);
+   
+     int num=0;
+     int oneToTen=0;
+     int elevenToTwenty=0;
+     int TwentyOneToThrity=0; 
+     int ThirtyOneToForuty=0; 
+     int ForutyOneToFifty=0; 
+     int FiftyOneToSixty=0;
+     int SixtyOneToSeventy=0; 
+     int SeventyOneToEighty=0; 
+     int EightyOneToNinty=0;
+     int NintyOnetoHundred=0;
+     
+ 
+      
+      System.out.println("Enter the amount of integers you plan to store and then all integers from ranges 1-100"); 
+        num=input.nextInt();
+      
+       int[] array= new int[num]; 
+       
+      
+      for(int i=0; i<num; i++)
+      {
+        array[i]=input.nextInt(); 
+      }
+      
+      for (int a = 0; a < array.length; a++) 
+      {
+          if(array[a]>=1 && array[a]<=10)
+            oneToTen++; 
+          if(array[a]>=11 && array[a]<=20)
+            elevenToTwenty++; 
+          if(array[a]>=21 && array[a]<=30)
+            TwentyOneToThrity++; 
+          if(array[a]>=31 && array[a]<=40) 
+            ThirtyOneToForuty++; 
+          if(array[a]>=41 && array[a]<=50)
+            ForutyOneToFifty++;
+          if(array[a]>=51 && array[a]<=60)
+            FiftyOneToSixty++;
+          if(array[a]>=61 && array[a]<=70)  
+            SixtyOneToSeventy++;
+          if(array[a]>=71 && array[a]<=80) 
+          SeventyOneToEighty++; 
+          if(array[a]>=81 && array[a]<=90) 
+          EightyOneToNinty++; 
+          if(array[a]>=91 && array[a]<=100) 
+          NintyOnetoHundred++;
+      }
+      
+      System.out.println(oneToTen+" values ranged between 1-10."); 
+      System.out.println(elevenToTwenty+" values ranged between 11-20."); 
+      System.out.println(TwentyOneToThrity+"  values ranged between 21-30."); 
+      System.out.println(ThirtyOneToForuty+" values ranged between 31-40"); 
+      System.out.println(ForutyOneToFifty+" values ranged between 41-50."); 
+      System.out.println(FiftyOneToSixty+" values ranged between 51-60."); 
+      System.out.println(SixtyOneToSeventy+" values ranged between 61-70."); 
+      System.out.println(SeventyOneToEighty+" values ranged between 71-80."); 
+      System.out.println(EightyOneToNinty+" values ranged between 81-90."); 
+      System.out.println(NintyOnetoHundred+" values ranged between 91-100."); 
+ }
+}
