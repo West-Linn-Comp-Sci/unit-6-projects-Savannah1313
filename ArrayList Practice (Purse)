@@ -1,0 +1,61 @@
+import java.util.ArrayList;
+public class Purse { 
+ 
+ArrayList<Coin>coins; 
+
+public Purse() { 
+coins = new ArrayList<Coin>(); 
+}
+ 
+ 
+public void add(Coin aCoin) { 
+coins.add(aCoin); 
+} 
+ 
+public double getTotal() { 
+    double total=0; 
+    for(Coin i: coins)
+    {
+        total+=i.getValue();
+    }
+    return total; 
+} 
+
+public int count(Coin aCoin) {
+    int count=0; 
+    
+    for(Coin i: coins)
+    {
+       if( i.equals(aCoin) )
+       {
+        count++;
+       }
+    }
+    return count; 
+ } 
+ 
+public String smallestValue()
+{
+    if(coins.size==0)
+    {
+        return "";
+    }
+    else
+    {
+        double small= coins.getValue();
+        String name="";
+        for(int i=1; i<coins.size(); i++)
+        {
+            if(coins.get(i).getValue<small)
+            {
+                small= coins.get(i).getValue();
+                name=coins.get(i).getName();
+            }
+        }
+        return name;
+    }
+    
+    
+}
+}
+

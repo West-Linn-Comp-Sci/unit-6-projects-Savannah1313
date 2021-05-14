@@ -1,0 +1,40 @@
+public class Album
+{
+   private String songName; 
+   private String artistName; 
+   private int numberOfSongs;
+   private double length; 
+   
+   public Album(String songName,String artistName, int numberOfSongs, double length)
+   {
+     this.songName= songName; 
+     this.artistName=artistName; 
+     this.numberOfSongs=numberOfSongs; 
+     this.length=length;
+    }
+   
+    public double findLength()
+    {
+        return length;
+    }
+    
+    public int findNumberOfSongs()
+    {
+        return numberOfSongs;
+    }
+    
+    public String findName()
+    {
+        return songName;
+    }
+    
+    public String findArtist()
+    {
+        return artistName;
+    }
+    
+    public String toString()
+    {
+    return "Title: "+songName+". Artist: "+artistName+". Number of Songs: "+numberOfSongs+". Play Time Total (minutes): "+length+"."; 
+    }
+}
